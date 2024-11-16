@@ -1,18 +1,13 @@
-import './App.css';
-import React from "react"; 
-import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
-//import LoginPage from "./pages/LoginPage";
-import { Container, Paper } from "@mui/material";
+import React from 'react';
+import { withAuthenticator } from '@aws-amplify/ui-react'; // This is the wrapper that provides authentication UI
 
 function App() {
   return (
-    <Container maxWidth="xs">
-      <Paper elevation={10}>
-        Login
-      </Paper>
-    </Container>
-
+    <div className="App">
+      <h1>Welcome to the E-learning Platform</h1>
+      <p>Build your personalized learning path</p>
+    </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App); // Wrap your app with authentication
