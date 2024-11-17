@@ -12,6 +12,15 @@ function App() {
       <Button onClick={signOut}>
         signout
       </Button>
+      <Button>
+        Python
+      </Button>
+      <Button>
+        React
+      </Button>
+      <Button>
+        AWS Services
+      </Button>
 
 
       
