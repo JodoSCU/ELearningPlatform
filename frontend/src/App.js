@@ -21,20 +21,23 @@ function App() {
       </Router>
     </UserProvider>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome to the E-learning Platform</h1>
+      <p>Build your personalized learning path</p>
+      <Button onClick={signOut}>
+        signout
+      </Button>
+      <Button>
+        Python
+      </Button>
+      <Button>
+        React
+      </Button>
+      <Button>
+        AWS Services
+      </Button>
+
+
+      
     </div>
   );
 }
