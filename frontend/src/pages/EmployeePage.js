@@ -1,23 +1,21 @@
-// src/pages/EmployeePage.js
 import React from 'react';
-import { useUserRole } from '../contexts/UserContext';
+import { useUserRole } from './contexts/UserContext';
 
 function EmployeePage() {
   const role = useUserRole();
 
+  if (role === null) {
+    return <p>Loading...</p>; // Add a loading state while fetching the role
+  }
+
   if (role !== 'Employee') {
-    return <div>You are not authorized to view this page.</div>;
+    return <p>Access Denied: You do not have the required permissions to view this page.</p>;
   }
 
   return (
     <div>
-      <h1>Employee Dashboard</h1>
-      <h2>Learning Track</h2>
-      {/* Add learning track components here */}
-      <div>
-        <h3>Assessment 1</h3>
-        {/* Add assessment details here */}
-      </div>
+      <h1>Welcome, Employee!</h1>
+      <p>This is the employee dashboard.</p>
     </div>
   );
 }

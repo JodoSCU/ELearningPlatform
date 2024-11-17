@@ -4,7 +4,7 @@ import { signOut } from 'aws-amplify/auth';
 import { Button } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { UserProvider } from './contexts/UserContext.js';
+import { UserProvider } from './pages/contexts/UserContext.js';
 import EmployeePage from './pages/EmployeePage.js';
 import AdminPage from './pages/AdminPage.js';
 

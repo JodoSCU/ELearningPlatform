@@ -1,27 +1,21 @@
-// src/pages/AdminPage.js
 import React from 'react';
-import { useUserRole } from '../contexts/UserContext';
+import { useUserRole } from './contexts/UserContext';
 
 function AdminPage() {
   const role = useUserRole();
 
+  if (role === null) {
+    return <p>Loading...</p>; // Add a loading state while fetching the role
+  }
+
   if (role !== 'Admin') {
-    return <div>You are not authorized to view this page.</div>;
+    return <p>Access Denied: You do not have the required permissions to view this page.</p>;
   }
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
-      <h2>Employee Progress</h2>
-      {/* Add components to list employees and show their progress here */}
-      <div>
-        <h3>Employee 1</h3>
-        <p>Progress: 80%</p>
-      </div>
-      <div>
-        <h3>Employee 2</h3>
-        <p>Progress: 90%</p>
-      </div>
+      <h1>Welcome, Admin!</h1>
+      <p>This is the admin dashboard.</p>
     </div>
   );
 }

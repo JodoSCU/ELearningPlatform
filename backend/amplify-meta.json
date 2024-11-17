@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-frontend-amplify-fabc6-authRole",
+      "UnauthRoleArn": "arn:aws:iam::454676855532:role/amplify-frontend-amplify-fabc6-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::454676855532:role/amplify-frontend-amplify-fabc6-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-frontend-amplify-fabc6-deployment",
+      "UnauthRoleName": "amplify-frontend-amplify-fabc6-unauthRole",
+      "StackName": "amplify-frontend-amplify-fabc6",
+      "StackId": "arn:aws:cloudformation:us-west-2:454676855532:stack/amplify-frontend-amplify-fabc6/d79621b0-a489-11ef-b8e2-023d72589a17",
+      "AmplifyAppId": "d23qb7p0nurffa"
+    }
+  },
+  "auth": {
+    "frontendbbec1433": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-frontend-amplify-fabc6-deployment/amplify-cfn-templates/auth/frontendbbec1433-cloudformation-template.json",
+        "logicalId": "authfrontendbbec1433"
+      },
+      "lastPushTimeStamp": "2024-11-17T02:21:18.968Z",
+      "output": {
+        "UserPoolId": "us-west-2_0k5vZ8fxI",
+        "AppClientIDWeb": "6j2hm554urqn623d62acl43dfp",
+        "AppClientID": "2f00obsrsf3rvim2b2jaug8g7h",
+        "IdentityPoolId": "us-west-2:8207c8cf-5d40-4e76-bcb5-7af6bcfdc6a9",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:454676855532:userpool/us-west-2_0k5vZ8fxI",
+        "IdentityPoolName": "frontendbbec1433_identitypool_bbec1433__amplify",
+        "UserPoolName": "frontendbbec1433_userpool_bbec1433"
+      },
+      "lastPushDirHash": "E9jLJTjOx+BxhD2PzLWxK+H3dC4="
+    }
+  }
+}
