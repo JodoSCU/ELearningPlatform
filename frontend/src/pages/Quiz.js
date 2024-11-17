@@ -40,7 +40,7 @@ function Quiz() {
   };
 
   // Check answers on submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newScore = { Python: 0, React: 0, AWS: 0 };
 
     // Iterate through the questions and calculate scores for each category
@@ -52,6 +52,30 @@ function Quiz() {
 
     setScore(newScore);
     setSubmitted(true);
+
+    const apiEndpoint = "https://i44lou520m.execute-api.us-east-1.amazonaws.com/dev/SaveQuizScores";
+
+  const requestData = {
+    userId: "unique-user-id", // Replace with actual user ID logic
+    pythonScore: newScore.Python,
+    reactScore: newScore.React,
+    awsScore: newScore.AWS,
+  };
+
+  try {
+    const response = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    const result = await response.json();
+    console.log("Score saved successfully:", result);
+  } catch (error) {
+    console.error("Error saving score:", error);
+  }
   };
 
   return (
