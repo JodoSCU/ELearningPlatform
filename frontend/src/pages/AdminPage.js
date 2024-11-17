@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUserRole } from './contexts/UserContext';
+import { useUserRole } from './contexts/UserContext.js';
 
 function AdminPage() {
   const role = useUserRole();

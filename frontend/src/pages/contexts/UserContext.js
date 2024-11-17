@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { Amplify } from 'aws-amplify'; // Named imports
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { Amplify, Auth } from 'aws-amplify'; // Import Auth from aws-amplify
+
 import awsconfig from '../../aws-exports'; // Adjust path if needed
 
 // Configure Amplify with AWS settings
@@ -14,9 +14,11 @@ export function UserProvider({ children }) {
   useEffect(() => {
     async function getUserRole() {
       try {
-        const user = await withAuthenticator.currentAuthenticatedUser();
+        // Use Auth.currentAuthenticatedUser() to get the current authenticated user
+        const user = await Auth.currentAuthenticatedUser();
         const groups = user.signInUserSession.idToken.payload['cognito:groups'];
 
+        // Check if the user belongs to the Admin or Employee groups
         if (groups && groups.includes('Admin')) {
           setRole('Admin');
         } else if (groups && groups.includes('Employee')) {
