@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/Quiz.css'; // Go up one level and then into the styles folder
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import '../styles/Quiz.css'; // Import your styles
 
 function Quiz() {
   const [score, setScore] = useState({
@@ -9,6 +10,8 @@ function Quiz() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [answers, setAnswers] = useState({});
+
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   // Define questions and correct answers for Python, React, and AWS Services
   const questions = [
@@ -39,7 +42,7 @@ function Quiz() {
     setAnswers({ ...answers, [questionId]: selectedOption });
   };
 
-  // Check answers on submission
+  // Check answers on submission and navigate to the results page
   const handleSubmit = () => {
     const newScore = { Python: 0, React: 0, AWS: 0 };
 
@@ -52,6 +55,9 @@ function Quiz() {
 
     setScore(newScore);
     setSubmitted(true);
+
+    // Navigate to results page and pass the scores as state
+    navigate('/results', { state: { categoryScores: newScore } });
   };
 
   return (

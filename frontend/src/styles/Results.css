@@ -1,0 +1,65 @@
+/* Results Page Styles */
+.results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .results-container h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .results-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .results-container p {
+    font-size: 1.5rem;
+    color: #4CAF50; /* Green for positive results */
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .results-footer {
+    margin-top: 30px;
+  }
+  
+  .results-footer button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .results-footer button:hover {
+    background-color: #45a049;
+  }
+  
+  .results-footer p {
+    font-size: 1rem;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .results-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .results-footer a:hover {
+    text-decoration: underline;
+  }
+  
