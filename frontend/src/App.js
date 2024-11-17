@@ -1,18 +1,15 @@
 import React from 'react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { signOut } from 'aws-amplify/auth';
 import { Button } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { UserProvider } from './pages/contexts/UserContext.js';
+import { UserProvider } from './pages/contexts/UserContext';  // Correct named import
 import EmployeePage from './pages/EmployeePage.js';
 import AdminPage from './pages/AdminPage.js';
 
-
-
-function App() {
+function App({ signOut, user }) {
   return (
-    <UserProvider>
+    <UserProvider user={user}>
       <Router>
         <div className="App">
           <h1>Welcome to the E-learning Platform</h1>
@@ -34,3 +31,4 @@ function App() {
 }
 
 export default withAuthenticator(App);
+

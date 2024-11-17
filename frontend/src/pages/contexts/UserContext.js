@@ -1,43 +1,73 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { Amplify, Auth } from 'aws-amplify'; // Import Auth from aws-amplify
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import awsconfig from '../../aws-exports';  // Correct path to aws-exports.js
 
-import awsconfig from '../../aws-exports'; // Adjust path if needed
-
-// Configure Amplify with AWS settings
 Amplify.configure(awsconfig);
 
 const UserContext = createContext();
 
-export function UserProvider({ children }) {
+function UserProvider({ children, user }) {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
-    async function getUserRole() {
-      try {
-        // Use Auth.currentAuthenticatedUser() to get the current authenticated user
-        const user = await Auth.currentAuthenticatedUser();
-        const groups = user.signInUserSession.idToken.payload['cognito:groups'];
+    if (user) {
+      const userSession = user.signInUserSession;
+      if (userSession && userSession.idToken) {
+        const groups = userSession.idToken.payload['cognito:groups'];
 
-        // Check if the user belongs to the Admin or Employee groups
-        if (groups && groups.includes('Admin')) {
-          setRole('Admin');
-        } else if (groups && groups.includes('Employee')) {
-          setRole('Employee');
+        if (groups) {
+          if (groups.includes('Admin')) {
+            setRole('Admin');
+          } else if (groups.includes('Employee')) {
+            setRole('Employee');
+          } else {
+            setRole('Unknown');
+          }
         } else {
           setRole('Unknown');
         }
-      } catch (error) {
-        console.error('Error fetching user role:', error);
-        setRole(null);
+      } else {
+        console.error('User session or ID token is missing');
+        setRole('Unknown');
       }
     }
-
-    getUserRole();
-  }, []);
+  }, [user]);  // Ensure this effect re-runs when the user changes
 
   return <UserContext.Provider value={role}>{children}</UserContext.Provider>;
 }
 
-export function useUserRole() {
+function useUserRole() {
   return useContext(UserContext);
 }
+
+// Export both the UserProvider and useUserRole as named exports
+export { UserProvider, useUserRole };
+
+// Export AppWithProviders as default
+function App({ signOut, user }) {
+  const role = useUserRole();
+
+  if (role === null) {
+    return <p>Loading...</p>;  // Show loading if the role is not set yet
+  }
+
+  return (
+    <div>
+      <h1>Hello {user?.username}</h1>
+      <p>Your role is: {role}</p>
+      <button onClick={signOut}>Sign out</button>
+    </div>
+  );
+}
+
+function AppWithProviders({ signOut, user }) {
+  return (
+    <UserProvider user={user}>
+      <App signOut={signOut} user={user} />
+    </UserProvider>
+  );
+}
+
+export default withAuthenticator(AppWithProviders);
+

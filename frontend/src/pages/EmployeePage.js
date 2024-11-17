@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUserRole } from './contexts/UserContext.js';
+import { useUserRole } from './contexts/UserContext.js';  // Correct named import
 
 function EmployeePage() {
   const role = useUserRole();
