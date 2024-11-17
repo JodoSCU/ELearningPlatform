@@ -1,6 +1,6 @@
 // src/contexts/UserContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
-import { Auth } from 'aws-amplify';
+import { signIn, signOut, Auth } from '@aws-amplify/auth';
 
 const UserContext = createContext();
 
