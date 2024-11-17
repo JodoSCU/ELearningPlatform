@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Quiz.css'; // Go up one level and then into the styles folder
+import { Card } from '@aws-amplify/ui-react';
+
 
 function Quiz() {
   const [score, setScore] = useState({
@@ -79,36 +81,44 @@ function Quiz() {
   };
 
   return (
-    <div>
-      <h2>Quiz: Python, React, and AWS Services</h2>
-      {questions.map((question) => (
-        <div key={question.id}>
-          <p>{question.question}</p>
-          {question.options.map((option) => (
-            <label key={option}>
-              <input
-                type="radio"
-                name={`question-${question.id}`}
-                value={option}
-                checked={answers[question.id] === option}
-                onChange={() => handleAnswerChange(question.id, option)}
-              />
-              {option}
-            </label>
+    <>
+
+      <div>
+        <h2>Quiz: Python, React, and AWS Services</h2>
+        <div style={{ padding: '0 7rem'}}>
+          {questions.map((question) => (
+            <Card variation="elevated" key={question.id} margin="2rem 0" borderRadius="12px">
+              <p>{question.question}</p>
+              {question.options.map((option) => (
+                <label key={option}>
+                  <input
+                    type="radio"
+                    name={`question-${question.id}`}
+                    value={option}
+                    checked={answers[question.id] === option}
+                    onChange={() => handleAnswerChange(question.id, option)}
+                  />
+                  {option}
+                </label>
+              ))}
+            </Card>
           ))}
         </div>
-      ))}
-      <button onClick={handleSubmit}>Submit</button>
-
-      {submitted && (
-        <div>
-          <h3>Results</h3>
-          <p>Python Score: {score.Python} / 5</p>
-          <p>React Score: {score.React} / 5</p>
-          <p>AWS Score: {score.AWS} / 5</p>
+        <div style={{ padding: '1 7rem', paddingBottom: '2em'}}>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
-      )}
-    </div>
+        
+
+        {submitted && (
+          <div>
+            <h3>Results</h3>
+            <p>Python Score: {score.Python} / 5</p>
+            <p>React Score: {score.React} / 5</p>
+            <p>AWS Score: {score.AWS} / 5</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

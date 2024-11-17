@@ -1,38 +1,19 @@
 .App {
-  text-align: center;
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  height: 100vh; /* Makes the container span the full viewport height */
+  text-align: center; /* Ensures text is centered within the div */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signout-container {
+  margin-top: 20px; /* Adjust the value as needed */
+  text-align: right; /* Aligns the button to the right (optional) */
+  padding-right: 10px; /* Adds a little spacing from the right edge */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  margin: 0; /* Removes default margin for better alignment */
 }
