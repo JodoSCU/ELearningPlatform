@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-amplify/ui-react": "^6.5.5",
+    "aws-amplify": "^6.8.2",
     "aws-sdk": "^2.1692.0",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
